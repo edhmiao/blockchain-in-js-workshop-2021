@@ -3,6 +3,11 @@ import Blockchain from '../models/Blockchain.js'
 import sha256 from 'crypto-js/sha256.js'
 import { calcNonce } from '../utils.js'
 
+const SHA256 = require('crypto-js/sha256');
+function CalculateHash(index, previousHash, timestap, data){
+  return SHA256(index + previousHash + timestap + data).toString();
+}
+
 const main = () => {
   // 初始化区块链
   let blockchain = new Blockchain('BitCoin')
